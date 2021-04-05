@@ -1,10 +1,107 @@
-'use strict'
+'use strict';
+function random(min, max) {
+    return Math.floor(Math.random() * (max - min) + min);
+};
+
 
 const WorkingHours = ['6am', ' 7am', '8am', '9am', '10am', '11am', '12am', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm']
 
+
+function Places(place, MinCust,MaxCust,AvgCookieSale,){
+    this.placeOfshop=place;
+    this.min=MinCust;
+    this.max=MaxCust;
+    this.avg=AvgCookieSale;
+    this.customersPHour=[];
+    this. AvrCookiesPurchasedPerCustomer=[];
+   
+   
+}
+
+
+
+
+let Seattle=new Places('Seattle',23,65,6.3,);
+
+let Tokyo = new Places('Tokyo', 3,24,1.2);
+  
+let Dubai =new Places('Dubai',11,38, 3.7);
+
+let Paris = new Places('Paris',20,38, 2.3);
+     
+let Lima = new Places( 'Lima',2,16,4.6);
+
+Places.prototype.customersPerHour=function(){ for (let i = 0; i < WorkingHours.length; i++) {
+    this.customersPHour.push(random(this.Min, this.Max))
+
+
+}
+//console.log(this.customersPHour);
+};
+ Places.prototype.NumberOfCookiesPurchasedPerCustomer=function () {
+    for (let i = 0; i < this.customersPHour.length; i++) {
+
+        this.AvrCookiesPurchasedPerCustomer.push(Math.floor(this.customersPHour[i] * this.AvgCookieSale));
+        this.total += this.AvrCookiesPurchasedPerCustomer[i];
+    }
+
+//console.log(this.AvrCookiesPurchasedPerCustomer);
+},
+//call the functions for every city untill i find a way to call in one time
+Seattle.customersPerHour();
+Seattle.NumberOfCookiesPurchasedPerCustomer();
+Tokyo.customersPerHour();
+Tokyo.NumberOfCookiesPurchasedPerCustomer();
+Dubai.customersPerHour();
+Dubai.NumberOfCookiesPurchasedPerCustomer();
+Paris.customersPerHour();
+Paris.NumberOfCookiesPurchasedPerCustomer();
+Lima.customersPerHour();
+Lima.NumberOfCookiesPurchasedPerCustomer();
+
+
+
+//// to make sure that the code is working
+//console.log(Seattle);
+
+//console.log(Tokyo);
+
+//console.log(Dubai);
+
+//console.log(Paris);
+
+//console.log(Lima);
+
+/***************************************** */
+// get element by id
+let parent=document.getElementById('container');
+//creat element
+console.log(parent)
+
+let table=document.createElement('table');
+//append element
+
+parent.appendChild(table)
+//for the table
+
+let headingRaw=document.createElement('tr');
+//appending the heading to the table 
+table.appendChild(headingRaw);
+let headings=[place, MinCust,MaxCust,AvgCookieSale];
+for (let i = 0; i < headings.length; i++) {
+    // creat the th element
+  let thelement=document.createElement('th')
+    //append the th
+    headingRaw.appendChild(thelement);
+    /// text
+    thelement.textContent=headings[i];
+
+}
+;
+
 //console.log(WorkingHours);
 /********************************************************************* */
-
+/*
 function random(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
 }
@@ -74,7 +171,7 @@ console.log(Seattle);
 
 /********************************************************************* */
 //second city 
-
+/*
 let Tokyo = {
     place: 'Tokyo',
     MinCust: 3,
@@ -135,7 +232,7 @@ console.log(Tokyo);
 
 
 /****************************************************************************************** */
-
+/*
 let Dubai = {
     place: 'Dubai',
     MinCust: 11,
@@ -195,6 +292,7 @@ Dubai.render();
 console.log(Dubai);
 
 /************************************************************************ */
+/*
 let Paris = {
     place: 'Paris',
     MinCust: 20,
@@ -253,7 +351,7 @@ Paris.calculateaverageNumberOfCookiesPurchasedPerCustomer();
 Paris.render();
 console.log(Paris);
 /****************************************************************************** */
-
+/*
 let Lima = {
     place: 'Lima',
     MinCust: 2,
@@ -311,3 +409,4 @@ Lima.CalculatecustomersPerHour();
 Lima.calculateaverageNumberOfCookiesPurchasedPerCustomer();
 Lima.render();
 console.log(Lima);
+}*/

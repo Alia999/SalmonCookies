@@ -74,7 +74,7 @@ console.log(Seattle);
 
 /********************************************************************* */
 //second city 
-/*
+
 let Tokyo = {
     place: 'Tokyo',
     MinCust: 3,

@@ -253,7 +253,7 @@ Paris.calculateaverageNumberOfCookiesPurchasedPerCustomer();
 Paris.render();
 console.log(Paris);
 /****************************************************************************** */
-/*
+
 let Lima = {
     place: 'Lima',
     MinCust: 2,
@@ -310,4 +310,4 @@ let Lima = {
 Lima.CalculatecustomersPerHour();
 Lima.calculateaverageNumberOfCookiesPurchasedPerCustomer();
 Lima.render();
-console.log(Lima);*/
+console.log(Lima);

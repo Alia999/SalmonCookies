@@ -1,9 +1,9 @@
-*{background-color: black;
+*{background-color: rgb(53, 49, 49);
     box-sizing: border-box;
     margin: 0;
   }
   h1, h2, h3, h4, p {
-    color: white;
+    color: rgb(150, 140, 140);
     font-family: 'Oswald', sans-serif;
   }
   h1 {
@@ -21,7 +21,5 @@
   }
   #home{font-size: xx-large;
 text-decoration: none;}
-  
-   #sales{font-size: xx-large
-    text-decoration: none;};
-      
+  #sales{font-size: xx-large;
+text-decoration: none;}

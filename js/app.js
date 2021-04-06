@@ -3,50 +3,84 @@ function random(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
 };
 
-
+let shops = [];
 const WorkingHours = ['6am', ' 7am', '8am', '9am', '10am', '11am', '12am', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm']
 
 
-function Places(place, MinCust,MaxCust,AvgCookieSale,){
-    this.placeOfshop=place;
-    this.min=MinCust;
-    this.max=MaxCust;
-    this.avg=AvgCookieSale;
-    this.customersPHour=[];
-    this. AvrCookiesPurchasedPerCustomer=[];
-   
-   
-}
+    // get element by id
+    let parent = document.getElementById('parent');
+    //creat element
+    //console.log(parent)
 
+    let table = document.createElement('table');
+    //append element
 
-
-
-let Seattle=new Places('Seattle',23,65,6.3,);
-
-let Tokyo = new Places('Tokyo', 3,24,1.2);
-  
-let Dubai =new Places('Dubai',11,38, 3.7);
-
-let Paris = new Places('Paris',20,38, 2.3);
-     
-let Lima = new Places( 'Lima',2,16,4.6);
-
-Places.prototype.customersPerHour=function(){ for (let i = 0; i < WorkingHours.length; i++) {
-    this.customersPHour.push(random(this.Min, this.Max))
-
-
-}
-//console.log(this.customersPHour);
+    parent.appendChild(table);
+    /// the head row 
+    function makeHeader() {
+    let headingRaw = document.createElement('tr');
+    //appending the heading to the table 
+    table.appendChild(headingRaw);
+    /// a loop depends on the working hours to loop for making th
+    for (let i = 0; i < WorkingHours.length; i++) {
+        let heade1lement = document.createElement('th');
+        /// append it to the headingow
+        headingRaw.appendChild(heade1lement);
+        //give it a text 
+        heade1lement.textContent = WorkingHours[i];
+    };
+    let heade2lement = document.createElement('th');
+    headingRaw.appendChild(heade2lement);
+    heade2lement.textContent = "total for every day";
 };
- Places.prototype.NumberOfCookiesPurchasedPerCustomer=function () {
+
+
+
+function Places(place, MinCust, MaxCust, AvgCookieSale,) {
+    this.placeOfshop = place;
+    this.min = MinCust;
+    this.max = MaxCust;
+    this.avg = AvgCookieSale;
+    this.customersPHour = [];
+    this.AvrCookiesPurchasedPerCustomer = [];
+    shops.push(this);
+
+}
+
+
+Places.prototype.customersPerHour = function () {
+    for (let i = 0; i < WorkingHours.length; i++) {
+        this.customersPHour.push(random(this.Min, this.Max))
+
+
+    }
+    //console.log(this.customersPHour);
+};
+Places.prototype.NumberOfCookiesPurchasedPerCustomer = function () {
     for (let i = 0; i < this.customersPHour.length; i++) {
 
         this.AvrCookiesPurchasedPerCustomer.push(Math.floor(this.customersPHour[i] * this.AvgCookieSale));
         this.total += this.AvrCookiesPurchasedPerCustomer[i];
     }
 
-//console.log(this.AvrCookiesPurchasedPerCustomer);
-},
+    //console.log(this.AvrCookiesPurchasedPerCustomer);
+};
+
+let Seattle = new Places('Seattle', 23, 65, 6.3,);
+
+let Tokyo = new Places('Tokyo', 3, 24, 1.2);
+
+let Dubai = new Places('Dubai', 11, 38, 3.7);
+
+let Paris = new Places('Paris', 20, 38, 2.3);
+
+let Lima = new Places('Lima', 2, 16, 4.6);
+
+
+for (let i = 0; i < Places.length; i++) {
+    shops[i].NumberOfCookiesPurchasedPerCustomer();
+
+}
 //call the functions for every city untill i find a way to call in one time
 Seattle.customersPerHour();
 Seattle.NumberOfCookiesPurchasedPerCustomer();
@@ -59,7 +93,7 @@ Paris.NumberOfCookiesPurchasedPerCustomer();
 Lima.customersPerHour();
 Lima.NumberOfCookiesPurchasedPerCustomer();
 
-
+makeHeader();
 
 //// to make sure that the code is working
 //console.log(Seattle);
@@ -73,31 +107,8 @@ Lima.NumberOfCookiesPurchasedPerCustomer();
 //console.log(Lima);
 
 /***************************************** */
-// get element by id
-let parent=document.getElementById('container');
-//creat element
-console.log(parent)
 
-let table=document.createElement('table');
-//append element
 
-parent.appendChild(table)
-//for the table
-
-let headingRaw=document.createElement('tr');
-//appending the heading to the table 
-table.appendChild(headingRaw);
-let headings=[place, MinCust,MaxCust,AvgCookieSale];
-for (let i = 0; i < headings.length; i++) {
-    // creat the th element
-  let thelement=document.createElement('th')
-    //append the th
-    headingRaw.appendChild(thelement);
-    /// text
-    thelement.textContent=headings[i];
-
-}
-;
 
 //console.log(WorkingHours);
 /********************************************************************* */
@@ -136,17 +147,17 @@ let Seattle = {
         //get parent/id/
         let parent = document.getElementById('parent')
         //console.log(parent);
-        //name tag 
+        //name tag
         let cityName = document.createElement('h2')
         //append
         parent.appendChild(cityName);
         //text
         cityName.textContent = this.place;
-        //the unorderd list 
+        //the unorderd list
         let ulelement = document.createElement('ul');
         //append elements
         parent.appendChild(ulelement);
-        ///creating the li*14 using a for loop 
+        ///creating the li*14 using a for loop
         for (let i = 0; i < WorkingHours.length; i++) {
             let li = document.createElement('li');
             ulelement.appendChild(li);
@@ -159,7 +170,7 @@ let Seattle = {
 
 
 };
-// calling functions 
+// calling functions
 Seattle.CalculatecustomersPerHour();
 Seattle.calculateaverageNumberOfCookiesPurchasedPerCustomer();
 Seattle.render();
@@ -201,17 +212,17 @@ let Tokyo = {
         //get parent/id/
         let parent = document.getElementById('parent')
         //console.log(parent);
-        //name tag 
+        //name tag
         let cityName = document.createElement('h2')
         //append
         parent.appendChild(cityName);
         //text
         cityName.textContent = this.place;
-        //the unorderd list 
+        //the unorderd list
         let ulelement = document.createElement('ul');
         //append elements
         parent.appendChild(ulelement);
-        ///creating the li*14 using a for loop 
+        ///creating the li*14 using a for loop
         for (let i = 0; i < WorkingHours.length; i++) {
             let li = document.createElement('li');
             ulelement.appendChild(li);
@@ -224,7 +235,7 @@ let Tokyo = {
 
 
 };
-// calling functions 
+// calling functions
 Tokyo.CalculatecustomersPerHour();
 Tokyo.calculateaverageNumberOfCookiesPurchasedPerCustomer();
 Tokyo.render();
@@ -262,17 +273,17 @@ let Dubai = {
         //get parent/id/
         let parent = document.getElementById('parent')
         //console.log(parent);
-        //name tag 
+        //name tag
         let cityName = document.createElement('h2')
         //append
         parent.appendChild(cityName);
         //text
         cityName.textContent = this.place;
-        //the unorderd list 
+        //the unorderd list
         let ulelement = document.createElement('ul');
         //append elements
         parent.appendChild(ulelement);
-        ///creating the li*14 using a for loop 
+        ///creating the li*14 using a for loop
         for (let i = 0; i < WorkingHours.length; i++) {
             let li = document.createElement('li');
             ulelement.appendChild(li);
@@ -285,7 +296,7 @@ let Dubai = {
 
 
 };
-// calling functions 
+// calling functions
 Dubai.CalculatecustomersPerHour();
 Dubai.calculateaverageNumberOfCookiesPurchasedPerCustomer();
 Dubai.render();
@@ -322,17 +333,17 @@ let Paris = {
         //get parent/id/
         let parent = document.getElementById('parent')
         //console.log(parent);
-        //name tag 
+        //name tag
         let cityName = document.createElement('h2')
         //append
         parent.appendChild(cityName);
         //text
         cityName.textContent = this.place;
-        //the unorderd list 
+        //the unorderd list
         let ulelement = document.createElement('ul');
         //append elements
         parent.appendChild(ulelement);
-        ///creating the li*14 using a for loop 
+        ///creating the li*14 using a for loop
         for (let i = 0; i < WorkingHours.length; i++) {
             let li = document.createElement('li');
             ulelement.appendChild(li);
@@ -345,7 +356,7 @@ let Paris = {
 
 
 };
-// calling functions 
+// calling functions
 Paris.CalculatecustomersPerHour();
 Paris.calculateaverageNumberOfCookiesPurchasedPerCustomer();
 Paris.render();
@@ -381,17 +392,17 @@ let Lima = {
         //get parent/id/
         let parent = document.getElementById('parent')
         //console.log(parent);
-        //name tag 
+        //name tag
         let cityName = document.createElement('h2')
         //append
         parent.appendChild(cityName);
         //text
         cityName.textContent = this.place;
-        //the unorderd list 
+        //the unorderd list
         let ulelement = document.createElement('ul');
         //append elements
         parent.appendChild(ulelement);
-        ///creating the li*14 using a for loop 
+        ///creating the li*14 using a for loop
         for (let i = 0; i < WorkingHours.length; i++) {
             let li = document.createElement('li');
             ulelement.appendChild(li);
@@ -404,7 +415,7 @@ let Lima = {
 
 
 };
-// calling functions 
+// calling functions
 Lima.CalculatecustomersPerHour();
 Lima.calculateaverageNumberOfCookiesPurchasedPerCustomer();
 Lima.render();

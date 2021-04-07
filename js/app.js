@@ -3,12 +3,12 @@ function random(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
 };
 
-let shops = [];
+
 const WorkingHours = ['6am', ' 7am', '8am', '9am', '10am', '11am', '12am', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm']
 
-
+/*
     // get element by id
-    let parent = document.getElementById('parent');
+    let parent = document.getElementById("parent");
     //creat element
     //console.log(parent)
 
@@ -33,22 +33,22 @@ const WorkingHours = ['6am', ' 7am', '8am', '9am', '10am', '11am', '12am', '1pm'
     headingRaw.appendChild(heade2lement);
     heade2lement.textContent = "total for every day";
 };
+*/
+let Shopes = [];
 
-
-
-function Places(place, MinCust, MaxCust, AvgCookieSale,) {
-    this.placeOfshop = place;
+function Shop(PlaceOfShop, MinCust, MaxCust, AvgCookieSale) {
+    this.placeOfshop = PlaceOfShop;
     this.min = MinCust;
     this.max = MaxCust;
     this.avg = AvgCookieSale;
     this.customersPHour = [];
     this.AvrCookiesPurchasedPerCustomer = [];
-    shops.push(this);
+    Shopes.push(this);
 
-}
+};
 
 
-Places.prototype.customersPerHour = function () {
+Shop.prototype.customersPerHour = function () {
     for (let i = 0; i < WorkingHours.length; i++) {
         this.customersPHour.push(random(this.Min, this.Max))
 
@@ -56,7 +56,7 @@ Places.prototype.customersPerHour = function () {
     }
     //console.log(this.customersPHour);
 };
-Places.prototype.NumberOfCookiesPurchasedPerCustomer = function () {
+Shop.prototype.NumberOfCookiesPurchasedPerCustomer = function () {
     for (let i = 0; i < this.customersPHour.length; i++) {
 
         this.AvrCookiesPurchasedPerCustomer.push(Math.floor(this.customersPHour[i] * this.AvgCookieSale));
@@ -66,21 +66,47 @@ Places.prototype.NumberOfCookiesPurchasedPerCustomer = function () {
     //console.log(this.AvrCookiesPurchasedPerCustomer);
 };
 
-let Seattle = new Places('Seattle', 23, 65, 6.3,);
+let Seattle = new Shop('Seattle', 23, 65, 6.3,);
 
-let Tokyo = new Places('Tokyo', 3, 24, 1.2);
+let Tokyo = new Shop('Tokyo', 3, 24, 1.2);
 
-let Dubai = new Places('Dubai', 11, 38, 3.7);
+let Dubai = new Shop('Dubai', 11, 38, 3.7);
 
-let Paris = new Places('Paris', 20, 38, 2.3);
+let Paris = new Shop('Paris', 20, 38, 2.3);
 
-let Lima = new Places('Lima', 2, 16, 4.6);
+let Lima = new Shop('Lima', 2, 16, 4.6);
+
+///get the form elements by id 
+let shopsForm=document.getElementById('shopsForm');
+//console.log(shopsForm);
+/// adding the event listener
+shopsForm.addEventListener('submit',submitter);
+//creat function for the submitter
+function submitter(event){
+    event.preventDefault();
+    ///console.log(event);
+   let placeOfshop=event.target.PlaceOftheShop.value;
+   // console.log(placeOfshop);
+    //
+    let min=event.target.MinCust.value;
+   // console.log(min);
+    let max=event.target.MaxCust.value;
+   // console.log(min);
+    let avg=event.target.AvgCookieSale.value;
+   // console.log(avg);
+    let NewShop= new Shop(placeOfshop,min,max,avg);
+    //console.log(NewShop);
+    NewShop.customersPerHour();
+    NewShop.NumberOfCookiesPurchasedPerCustomer();
+};
 
 
-for (let i = 0; i < Places.length; i++) {
-    shops[i].NumberOfCookiesPurchasedPerCustomer();
+
+for (let i = 0; i < Shop.length; i++) {
+    Shopes[i].NumberOfCookiesPurchasedPerCustomer();
 
 }
+
 //call the functions for every city untill i find a way to call in one time
 Seattle.customersPerHour();
 Seattle.NumberOfCookiesPurchasedPerCustomer();
@@ -93,7 +119,7 @@ Paris.NumberOfCookiesPurchasedPerCustomer();
 Lima.customersPerHour();
 Lima.NumberOfCookiesPurchasedPerCustomer();
 
-makeHeader();
+console.log(Shopes);
 
 //// to make sure that the code is working
 //console.log(Seattle);

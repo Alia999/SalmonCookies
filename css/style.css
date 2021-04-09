@@ -11,29 +11,29 @@ table{
 
 
 th {
-color:black;
+color:rgb(248, 245, 245);
 font-size:30px;
-background-color:green ;
+background-color:rgb(98, 175, 165) ;
 text-align: center;
 
 font-weight: bold;
-border: 2px solid black;
+border: 2px solid rgb(117, 112, 112);
 }
 
 
 td{
-  color:brown;
-  background-color:#f0a500;
+  color:rgb(243, 236, 236);
+  background-color:#7aa8a8;
   font-size:30px;
   text-align: center;
 
-  border: 2px solid black;
+  border: 2px solid rgb(80, 76, 76);
 }
 
 
 
 
-*{background-color: black;
+*{background-color: rgb(172, 172, 172);
     box-sizing: border-box;
     margin: 0;
   }
@@ -57,6 +57,7 @@ td{
   #home{font-size: xx-large;
 text-decoration: none;}
   
-   #sales{font-size: xx-large
-    text-decoration: none;};
+   #sales{font-size: xx-large;
+    text-decoration: none;
+    }
       

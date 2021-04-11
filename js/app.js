@@ -25,9 +25,11 @@ function Places(place, MinCust, MaxCust, AvgCookieSale,) {
     this.avg = AvgCookieSale;
     this.customersPHour = [];
     this.AvrCookiesPurchasedPerCustomer = [];
+   
 
     shops.push(this);
     this.total = 0;
+    this.render=""
 }
 
 
@@ -150,9 +152,68 @@ Places.prototype.render = function n () {
 console.log(shops);
 function makingFooter() { };
 
-render();
+Seattle.render();
+Tokyo.render();
+Dubai.render();
+Paris.render();
+Lima.render();
 
 
+
+function makingFooter() {
+    
+    let footerRow=document.createElement('tr');
+
+    table.appendChild(footerRow);
+
+
+    let firstTh = document.createElement('th');
+
+    
+    footerRow.appendChild(firstTh);
+
+  
+    firstTh.textContent='Totals';
+
+    let totalHours;
+    let MegaTotal=0;
+  
+    for (let i = 0; i < Workinghours.length; i++) {
+        totalHours=0;
+        for (let j = 0; j < shops.length; j++) {
+            // console.log(hours[i]);
+            // console.log(stores[j]);
+            totalHours+=shops[j].AvrCookiesPurchasedPerCustomer[i];
+            MegaTotal+=stores[j].AvrCookiesPurchasedPerCustomer[i];
+         
+        }
+       
+        
+        let footerTh=document.createElement('th');
+
+       
+        footerRow.appendChild(footerTh);
+
+      
+        footerTh.textContent=totalHours;
+
+    }
+
+    let totalTh= document.createElement('th');
+
+   
+    footerRow.appendChild(totalTh);
+
+   
+    totalTh.textContent=MegaTotal;
+     
+   
+
+
+}
+
+
+makingFooter();
 
 
 

@@ -12,6 +12,8 @@
     
     <link rel="stylesheet"  href="css/reset.css" >
     <link rel="stylesheet"  href="css/style.css" >
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
 </head>
 <head>
     <a id="home" href="index.html">Home</a> 
@@ -19,8 +21,33 @@
 </head>
 <body>
     <h1>sales data</h1>
-    <div id='parent'></div>
+   
+    <main>
+        
+        <form action="" id="shopsForm">
 
+            <label for="PlaceOftheShop">Place</label>
+            <input type="text" id="PlaceOftheShop" placeholder="shop Place" >
+            <br>
+            <br>
+            <label for="MinCust">Min/Cust</label>
+            <input type="number" id="MinCust" step="1" >
+            <br>
+            <br>
+            <label for="MaxCust">Max/Cust</label>
+            <input type="number" id="MaxCust" step="1" >
+            <br>
+            <br>
+            <label for="AvgCookieSale">Avg/Cookie/Sale</label>
+            <input type="number" id="AvgCookieSale" step="0.1" >
+            <br>
+            <br>
+            <input id="s" type="submit">
+            <fieldset>
+        </form>
+        </fieldset>
+    </main>
+    <div id='parent'></div>
     
 
     <script src="js/app.js"></script>
